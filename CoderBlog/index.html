@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Coder Blog</title>
+    <head>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
+    </head>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container">
+        <a
+          href="index.html"
+          class="navbar-brand animate__animated animate__backInLeft"
+        >
+          <i class="fa-solid fa-house"></i>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mobile"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="mobile" class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a
+                href="index.html"
+                class="nav-link active animate__animated animate__backInDown animate__fast"
+                >Home</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="blogs.html"
+                class="nav-link animate__animated animate__backInDown animate__slow"
+                >Blogs</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                href="contact.html"
+                class="nav-link animate__animated animate__backInDown animate_slower"
+                >Contact</a
+              >
+            </li>
+          </ul>
+          <div class="dark-mode-toggle">
+            <input type="checkbox" id="darkSwitch" />
+            <label for="darkSwitch" class="label-switch">
+              <i class="fa-solid fa-sun"></i>
+              <i class="fa-solid fa-moon"></i>
+              <span class="ball"></span>
+            </label>
+          </div>
+
+          <form class="d-flex" onsubmit="searchFunction(event)">
+            <input
+              id="searchInput"
+              type="text"
+              class="form-control me-1 animate__animated animate__flash"
+              placeholder="Search"
+            />
+            <button
+              type="submit"
+              class="btn btn-warning animate__animated animate__shakeY"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <div class="text-center pt-5 mt-5 px-4 border-bottom">
+        <h1 class="display-4 fw-bold">Coder Blog</h1>
+        <div class="col-lg-6 mx-auto">
+          <p class="lead mb-4">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam
+            saepe quidem mollitia deleniti pariatur commodi hic corrupti beatae
+            molestiae praesentium?
+          </p>
+          <div class="mb-5 d-grid gap-2 d-md-flex justify-content-md-center">
+            <button class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-caret-right"></i> Button
+            </button>
+            <button class="btn btn-outline-secondary btn-lg">
+              <i class="fa-solid fa-caret-right"></i> Button
+            </button>
+          </div>
+          <div class="overflow-hidden" style="max-height: 40vh">
+            <div class="container px-5 img-position">
+              <img
+                src="img/bg2.png"
+                class="img-fluid border rounded-3 shadow-lg mb-4 animate__animated animate__bounceInUp"
+                width="700"
+                height="500"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="bg-dark px-4 py-5 text-center text-white">
+        <div class="py-5">
+          <h1 class="display-5 fw-bold">Lorem, ipsum.</h1>
+          <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam
+              saepe quidem mollitia deleniti pariatur commodi hic corrupti
+              beatae molestiae praesentium?
+            </p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+              <button class="btn btn-outline-warning btn-lg">
+                <i class="fa-solid fa-caret-right"></i> Button
+              </button>
+              <button class="btn btn-outline-light btn-lg">
+                <i class="fa-solid fa-caret-right"></i> Button
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container my-4">
+        <div class="row row-cols-1 row-cols-lg-3 row-cols-md-2 g-4">
+          <div class="col">
+            <div class="card mb-3 shadow">
+              <img
+                class="img-fluid rounded-start random-image card-img-top"
+                src="https://picsum.photos/350/250"
+                alt="Resim Yüklenemedi"
+              />
+
+              <div class="card-body">
+                <h5 class="card-title">Lorem1.</h5>
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Numquam, id?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-3 shadow">
+              <img
+                class="img-fluid rounded-start random-image card-img-top"
+                src="https://picsum.photos/350/250"
+                alt="Resim Yüklenemedi"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Lorem2</h5>
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Numquam, id?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-3 shadow">
+              <img
+                class="img-fluid rounded-start random-image card-img-top"
+                src="https://picsum.photos/350/250"
+                alt="Resim Yüklenemedi"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Lorem3</h5>
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Numquam, id?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-3 shadow">
+              <img
+                class="img-fluid rounded-start random-image card-img-top"
+                src="https://picsum.photos/350/250"
+                alt="Resim Yüklenemedi"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Lorem4</h5>
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Numquam, id?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-3 shadow">
+              <img
+                class="img-fluid rounded-start random-image card-img-top"
+                src="https://picsum.photos/350/250"
+                alt="Resim Yüklenemedi"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Lorem5</h5>
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Numquam, id?
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card mb-3 shadow">
+              <img
+                class="img-fluid rounded-start random-image card-img-top"
+                src="https://picsum.photos/350/250"
+                alt="Resim Yüklenemedi"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Lorem6</h5>
+                <p class="card-text">
+                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                  Numquam, id?
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="py-5 bg-dark text-white">
+      <div class="container text-center">
+        <span>All Rights Reserved. @2025</span>
+      </div>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const darkSwitch = document.getElementById("darkSwitch");
+        const currentTheme = localStorage.getItem("theme") || "light";
+
+        // Sayfa ilk yüklendiğinde, eğer tema 'dark' ise dark-mode sınıflarını ekliyoruz
+        if (currentTheme === "dark") {
+          document.body.classList.add("dark-mode");
+          document.querySelector("header").classList.add("dark-mode");
+          document.querySelector("main").classList.add("dark-mode");
+          darkSwitch.checked = true; // Switch açık konumda
+        }
+
+        // Switch durumunu değiştirince (checkbox tıklandığında) tema geçişi yap
+        darkSwitch.addEventListener("change", function () {
+          if (darkSwitch.checked) {
+            // Karanlık mod
+            document.body.classList.add("dark-mode");
+            document.querySelector("header").classList.add("dark-mode");
+            document.querySelector("main").classList.add("dark-mode");
+            localStorage.setItem("theme", "dark");
+          } else {
+            // Aydınlık mod
+            document.body.classList.remove("dark-mode");
+            document.querySelector("header").classList.remove("dark-mode");
+            document.querySelector("main").classList.remove("dark-mode");
+            localStorage.setItem("theme", "light");
+          }
+        });
+      });
+    </script>
+
+    <script>
+      // DOM tamamen yüklendiğinde çalışacak bir event listener ekliyoruz.
+      // Bu, HTML içeriği tamamen oluşturulmadan script'in çalışmasını engeller.
+      document.addEventListener("DOMContentLoaded", () => {
+        // 'img.random-image' seçicisi ile "random-image" sınıfına sahip tüm <img> elemanlarını seçiyoruz.
+        // document.querySelectorAll() dönen NodeList üzerinde forEach metodu ile döngü başlatıyoruz.
+        document.querySelectorAll("img.random-image").forEach((img) => {
+          // Her resim için src özniteliğini, Picsum API'den rastgele resim getirecek şekilde ayarlıyoruz.
+          // URL'e "random=" parametresi ekleyip Math.random() ile benzersiz bir değer ekliyoruz,
+          // böylece tarayıcı önbelleklemesinin önüne geçip her resmin farklı görünmesini sağlıyoruz.
+          img.src = "https://picsum.photos/350/250?random=" + Math.random();
+        });
+      });
+    </script>
+    <script>
+      window.addEventListener("scroll", function () {
+        const headerContainer = document.querySelector(".overflow-hidden");
+        const initialHeight = 0.4 * window.innerHeight; // Başlangıçta 30vh'nin piksel değeri
+        const minHeight = 0.1 * window.innerHeight; // Minimum yükseklik örneğin 15vh olsun
+        const scrollAmount = window.scrollY;
+
+        // scrollAmount'a bağlı olarak yeni max-height hesaplanıyor
+        let newHeight = Math.max(minHeight, initialHeight - scrollAmount / 2);
+
+        headerContainer.style.maxHeight = newHeight + "px";
+      });
+    </script>
+    <script>
+      // searchFunction fonksiyonu, form gönderildiğinde çağrılacak
+      function searchFunction(event) {
+        // event.preventDefault() ile formun varsayılan davranışını (sayfanın yenilenmesi) engelliyoruz
+        event.preventDefault();
+
+        // 'searchInput' id'sine sahip input elemanından değeri alıyoruz ve küçük harfe çeviriyoruz
+        const query = document
+          .getElementById("searchInput")
+          .value.toLowerCase();
+
+        // Sayfadaki tüm '.card' sınıfına sahip öğeleri seçiyoruz
+        const cards = document.querySelectorAll(".card");
+
+        // Tüm '.card' öğeleri üzerinde döngü başlatıyoruz
+        cards.forEach((card) => {
+          // Her kartın başlık (card-title) ve metin (card-text) içeriğini alıyoruz
+          const title = card
+            .querySelector(".card-title")
+            .innerText.toLowerCase();
+          const text = card.querySelector(".card-text").innerText.toLowerCase();
+
+          // Eğer başlık veya metin, arama sorgusunu (query) içeriyorsa kartı gösteriyoruz
+          if (title.includes(query) || text.includes(query)) {
+            card.style.display = ""; // Kartı göster
+          } else {
+            card.style.display = "none"; // Kartı gizle
+          }
+        });
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

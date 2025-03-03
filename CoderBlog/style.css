@@ -1,0 +1,142 @@
+body {
+  box-sizing: border-box;
+}
+.navbar {
+  background: #085e7d !important;
+}
+
+.bg-dark {
+  background: #085e7d !important;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 25vh;
+  object-fit: cover;
+}
+#map {
+  height: 450px;
+}
+@media (min-width: 768px) {
+  .card-img-top {
+    height: 32vh;
+  }
+
+  .sol-link {
+    position: sticky;
+    top: 0;
+  }
+
+  #map {
+    height: 100%;
+  }
+}
+
+/* Dark modda genel body stili */
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+/* Header ve main için dark mod stili */
+header.dark-mode,
+main.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+}
+/* Main içerisindeki card-body için dark mod stili: background warning, text beyaz */
+main.dark-mode .card .card-body {
+  background-color: #ffc107;
+  color: #ffffff;
+}
+
+/* Toggle Switch kapsayıcısı */
+.dark-mode-toggle {
+  position: relative;
+  width: 60px;
+  height: 30px;
+  margin-right: 1rem; /* Navbar buton arası boşluk */
+}
+
+/* CheckBox ilk etapta gizleniyor (asıl switch mekanizması) */
+.dark-mode-toggle input[type="checkbox"] {
+  display: none;
+}
+
+/* Label (görsel switch alanı) */
+.dark-mode-toggle .label-switch {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: #666; /* Kapalı konumda switch arka plan rengi */
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+/* Güneş ve ay ikonlarının ortak ayarları: Dikey ortalama */
+.label-switch .fa-sun,
+.label-switch .fa-moon {
+  position: absolute;
+  top: 50%; /* İkonu container'ın ortasına yerleştirir */
+  transform: translateY(-50%); /* İkonu tam ortalamak için */
+  font-size: 18px; /* İkon boyutunu biraz büyüttük */
+  color: #fff; /* Varsayılan renk, sonra yeniden renklendiriyoruz */
+}
+
+/* Güneş ikonu: Sol taraf */
+.label-switch .fa-sun {
+  left: 8px; /* Sol tarafta 8px boşluk */
+  color: orange; /* Turuncu renk */
+}
+
+/* Ay ikonu: Sağ taraf */
+.label-switch .fa-moon {
+  right: -32px; /* Sağ tarafta 8px boşluk */
+  top: 13px;
+  color: gold; /* Altın sarısı renk */
+  position: relative; /* Pseudo-elementin (yıldızın) konumlandırılabilmesi için */
+}
+
+/* Ay ikonunun pseudo-elementi ile yıldız efekti */
+.label-switch .fa-moon::after {
+  content: "✦"; /* Küçük yıldız karakteri */
+  position: absolute;
+  top: -4px; /* Ay ikonunun üst kısmına yakın */
+  right: -4px; /* Ay ikonunun sağ köşesine yakın */
+  color: gold;
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* Switch içindeki yuvarlak top */
+.label-switch .ball {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* CheckBox işaretliyken top sağa kayıyor */
+.dark-mode-toggle input[type="checkbox"]:checked + .label-switch .ball {
+  transform: translateX(30px);
+}
+
+/* CheckBox işaretliyken switch arka planı koyulaşıyor */
+.dark-mode-toggle input[type="checkbox"]:checked + .label-switch {
+  background: white;
+}
+
+/* Karanlık modda (.dark-mode olduğunda) yuvarlak top turuncu olsun */
+body.dark-mode .dark-mode-toggle .label-switch .ball {
+  background: orange;
+}
+
+/* Aydınlık modda (body dark-mode içermediğinde) yuvarlak top altın sarısı olsun */
+body:not(.dark-mode) .dark-mode-toggle .label-switch .ball {
+  background: gold;
+}

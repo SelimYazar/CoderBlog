@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="tr" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Coder Blog</title>
+    <!-- Animate.css ekli, animasyonlar için -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </head>
+  <body class="h-100 d-flex flex-column">
+    <!-- Mevcut Navbar ve Arama Formu -->
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">
+          <i class="fa-solid fa-house"></i>
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mobile"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Form'a position-relative ekleyerek öneriler container'ını konumlandırıyoruz -->
+        <div id="mobile" class="collapse navbar-collapse">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="blogs.html" class="nav-link active">Blogs</a>
+            </li>
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link">Contact</a>
+            </li>
+          </ul>
+          <form
+            class="d-flex position-relative"
+            onsubmit="searchFunction(event)"
+          >
+            <input
+              id="searchInput"
+              type="text"
+              class="form-control me-1"
+              placeholder="Search 'Category' "
+            />
+            <button type="submit" class="btn btn-warning">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <!-- Autocomplete öneriler için container -->
+            <div
+              id="search-suggestions"
+              class="list-group position-absolute"
+              style="top: 100%; left: 0; right: 0; z-index: 1050"
+            ></div>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container my-4">
+        <div class="row">
+          <!-- Sol taraftaki kategori linkleri (mevcut işlev korunuyor) -->
+          <div class="col-md-3 order-2 order-md-1 d-none d-sm-block">
+            <div class="list-group sol-link">
+              <a
+                href="#"
+                class="list-group-item list-group-item-action"
+                data-category="Category 1"
+                >Category 1</a
+              >
+              <a
+                href="#"
+                class="list-group-item list-group-item-action"
+                data-category="Category 2"
+                >Category 2</a
+              >
+              <a
+                href="#"
+                class="list-group-item list-group-item-action"
+                data-category="Category 3"
+                >Category 3</a
+              >
+              <a
+                href="#"
+                class="list-group-item list-group-item-action"
+                data-category="Category 4"
+                >Category 4</a
+              >
+            </div>
+          </div>
+          <div class="col-md-9 order-1 order-md-2">
+            <nav>
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active">Data</li>
+              </ol>
+            </nav>
+
+            <!-- Blog Kartları Bölümü -->
+            <div id="card-container" class="text-center">
+              <!-- Category 1: 4 Kart -->
+              <div class="card mb-2 shadow" data-category="Category 1">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 1 - Card 1</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 1">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 1 - Card 2</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-end random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 1">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 1 - Card 3</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 1">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 1 - Card 4</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-end random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Category 2: 4 Kart -->
+              <div class="card mb-2 shadow" data-category="Category 2">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 2 - Card 1</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 2">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 2 - Card 2</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 2">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 2 - Card 3</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 2">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 2 - Card 4</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Category 3: 4 Kart -->
+              <div class="card mb-2 shadow" data-category="Category 3">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 3 - Card 1</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 3">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 3 - Card 2</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 3">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 3 - Card 3</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 3">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 3 - Card 4</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Category 4: 4 Kart -->
+              <div class="card mb-2 shadow" data-category="Category 4">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 4 - Card 1</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 4">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 4 - Card 2</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 4">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 4 - Card 3</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-2 shadow" data-category="Category 4">
+                <div class="row">
+                  <div class="col-4">
+                    <img
+                      class="img-fluid rounded-start random-image"
+                      src="https://picsum.photos/350/250"
+                      alt=""
+                    />
+                  </div>
+                  <div class="col-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Category 4 - Card 4</h5>
+                      <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pagination Bölümü -->
+            <nav class="my-5">
+              <ul
+                class="pagination justify-content-sm-start justify-content-md-center justify-content-lg-end"
+              >
+                <li class="page-item" id="prev-page">
+                  <a href="#" class="page-link">Previous</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">1</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">2</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">3</a>
+                </li>
+                <li class="page-item">
+                  <a href="#" class="page-link">4</a>
+                </li>
+                <li class="page-item" id="next-page">
+                  <a href="#" class="page-link">Next</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="py-5 bg-dark text-white mt-auto">
+      <div class="container text-center">
+        <span>All Rights Reserved. @2025</span>
+      </div>
+    </footer>
+    <script>
+      // DOM tamamen yüklendiğinde çalışacak bir event listener ekliyoruz.
+      // Bu, HTML içeriği tamamen oluşturulmadan script'in çalışmasını engeller.
+      document.addEventListener("DOMContentLoaded", () => {
+        // 'img.random-image' seçicisi ile "random-image" sınıfına sahip tüm <img> elemanlarını seçiyoruz.
+        // document.querySelectorAll() dönen NodeList üzerinde forEach metodu ile döngü başlatıyoruz.
+        document.querySelectorAll("img.random-image").forEach((img) => {
+          // Her resim için src özniteliğini, Picsum API'den rastgele resim getirecek şekilde ayarlıyoruz.
+          // URL'e "random=" parametresi ekleyip Math.random() ile benzersiz bir değer ekliyoruz,
+          // böylece tarayıcı önbelleklemesinin önüne geçip her resmin farklı görünmesini sağlıyoruz.
+          img.src = "https://picsum.photos/350/250?random=" + Math.random();
+        });
+      });
+    </script>
+
+    <!-- Mevcut Arama Fonksiyonu (vurgulama ve kategori aramaları eklendi) -->
+    <script>
+      function searchFunction(event) {
+        event.preventDefault();
+        const query = document
+          .getElementById("searchInput")
+          .value.toLowerCase()
+          .trim();
+
+        // Eğer arama sorgusu kategori belirtiyorsa:
+        if (
+          query === "category 1" ||
+          query === "category1" ||
+          query === "category 2" ||
+          query === "category2" ||
+          query === "category 3" ||
+          query === "category3" ||
+          query === "category 4" ||
+          query === "category4"
+        ) {
+          if (query.includes("1")) {
+            currentCategory = "Category 1";
+          } else if (query.includes("2")) {
+            currentCategory = "Category 2";
+          } else if (query.includes("3")) {
+            currentCategory = "Category 3";
+          } else if (query.includes("4")) {
+            currentCategory = "Category 4";
+          }
+          currentPage = getPageForCategory(currentCategory);
+          filterCards();
+          highlightCategory();
+          highlightPagination();
+          return;
+        }
+
+        // Arama sonuçlarında vurgulama yapabilmek için önce her kartın orijinal içeriklerini geri yükleyelim
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          const titleEl = card.querySelector(".card-title");
+          const textEl = card.querySelector(".card-text");
+          titleEl.innerHTML = card.dataset.originalTitle;
+          textEl.innerHTML = card.dataset.originalText;
+        });
+
+        // Normal metin araması ve vurgulama
+        cards.forEach((card) => {
+          const titleEl = card.querySelector(".card-title");
+          const textEl = card.querySelector(".card-text");
+          const originalTitle = card.dataset.originalTitle;
+          const originalText = card.dataset.originalText;
+
+          if (
+            titleEl.innerText.toLowerCase().includes(query) ||
+            textEl.innerText.toLowerCase().includes(query)
+          ) {
+            // Özel karakterlerden kaçış
+            const safeQuery = query.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            const re = new RegExp("(" + safeQuery + ")", "gi");
+            titleEl.innerHTML = originalTitle.replace(re, "<mark>$1</mark>");
+            textEl.innerHTML = originalText.replace(re, "<mark>$1</mark>");
+            card.style.display = "";
+            card.classList.add("animate__animated", "animate__fadeIn");
+            setTimeout(() => {
+              card.classList.remove("animate__animated", "animate__fadeIn");
+            }, 1000);
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        // Eğer arama sonucunda görünür kartların hepsi tek bir kategoriye aitse, currentCategory ve currentPage güncellensin
+        const visibleCards = Array.from(cards).filter(
+          (card) => card.style.display !== "none"
+        );
+        if (visibleCards.length > 0) {
+          const visibleCategories = new Set();
+          visibleCards.forEach((card) => {
+            visibleCategories.add(card.getAttribute("data-category"));
+          });
+          if (visibleCategories.size === 1) {
+            currentCategory = [...visibleCategories][0];
+            currentPage = getPageForCategory(currentCategory);
+            highlightCategory();
+            highlightPagination();
+          }
+        }
+      }
+    </script>
+
+    <!-- Live Search Autocomplete -->
+    <script>
+      // Basit öneri listesi için; burada blog başlıklarını kullanıyoruz
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", function () {
+          const query = this.value.toLowerCase().trim();
+          const suggestionsContainer =
+            document.getElementById("search-suggestions");
+          suggestionsContainer.innerHTML = "";
+          if (query.length === 0) return;
+
+          // Tüm kart başlıklarından önerileri toplayalım (tekrarları önleyerek)
+          const suggestions = [];
+          document.querySelectorAll(".card .card-title").forEach((el) => {
+            const text = el.innerText;
+            if (
+              text.toLowerCase().includes(query) &&
+              !suggestions.includes(text)
+            ) {
+              suggestions.push(text);
+            }
+          });
+
+          suggestions.forEach((sugg) => {
+            const a = document.createElement("a");
+            a.href = "#";
+            a.className = "list-group-item list-group-item-action";
+            a.innerText = sugg;
+            a.addEventListener("click", function (e) {
+              e.preventDefault();
+              document.getElementById("searchInput").value = sugg;
+              suggestionsContainer.innerHTML = "";
+              // Tetikle arama
+              searchFunction({ preventDefault: () => {} });
+            });
+            suggestionsContainer.appendChild(a);
+          });
+        });
+    </script>
+
+    <!-- Orijinal metinleri saklama (vurgulama için) -->
+    <script>
+      window.addEventListener("load", function () {
+        document.querySelectorAll(".card").forEach((card) => {
+          const titleEl = card.querySelector(".card-title");
+          const textEl = card.querySelector(".card-text");
+          card.dataset.originalTitle = titleEl.innerHTML;
+          card.dataset.originalText = textEl.innerHTML;
+        });
+        // Sayfa açılışında varsayılan kategori ve pagination ayarları
+        currentCategory = getCategoryForPage(currentPage);
+        filterCards();
+        highlightCategory();
+        highlightPagination();
+      });
+    </script>
+
+    <!-- Kategori, Pagination ve Senkronizasyon Fonksiyonları -->
+    <script>
+      let currentCategory = "";
+      let currentPage = 1;
+      const itemsPerPage = 4;
+
+      // Kategori linklerine tıklama
+      document.querySelectorAll(".list-group-item").forEach((item) => {
+        item.addEventListener("click", function () {
+          currentCategory = this.getAttribute("data-category");
+          currentPage = getPageForCategory(currentCategory);
+          filterCards();
+          highlightCategory();
+          highlightPagination();
+        });
+      });
+
+      // Pagination linkleri (Previous, Next ve sayfa numaraları) üzerine tıklama
+      document.querySelectorAll(".page-link").forEach((link) => {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          const text = this.innerText;
+          if (text === "Previous") {
+            if (currentPage > 1) {
+              currentPage--;
+            }
+          } else if (text === "Next") {
+            if (currentPage < 4) {
+              currentPage++;
+            }
+          } else {
+            currentPage = parseInt(text);
+          }
+          currentCategory = getCategoryForPage(currentPage);
+          filterCards();
+          highlightCategory();
+          highlightPagination();
+        });
+      });
+
+      // Verilen kategoriye karşılık gelen sayfa numarasını döndürür (sabit eşleşme: 1->Category 1, 2->Category 2, vb.)
+      function getPageForCategory(category) {
+        switch (category) {
+          case "Category 1":
+            return 1;
+          case "Category 2":
+            return 2;
+          case "Category 3":
+            return 3;
+          case "Category 4":
+            return 4;
+          default:
+            return 1;
+        }
+      }
+
+      // Verilen sayfa numarasına karşılık gelen kategoriyi döndürür
+      function getCategoryForPage(page) {
+        switch (page) {
+          case 1:
+            return "Category 1";
+          case 2:
+            return "Category 2";
+          case 3:
+            return "Category 3";
+          case 4:
+            return "Category 4";
+          default:
+            return "Category 1";
+        }
+      }
+
+      // Kartları filtrele: Eğer kategori seçildiyse, sadece o kategoriye ait kartları göster (pagination slicing kaldırıldı)
+      function filterCards() {
+        const cards = document.querySelectorAll(".card");
+        if (currentCategory !== "") {
+          cards.forEach((card) => {
+            if (card.getAttribute("data-category") === currentCategory) {
+              card.style.display = "";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        } else {
+          // Eğer kategori seçilmemişse (varsayılan modda) tüm kartları pagination'a göre göster
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          cards.forEach((card, index) => {
+            if (index >= startIndex && index < endIndex) {
+              card.style.display = "";
+            } else {
+              card.style.display = "none";
+            }
+          });
+        }
+      }
+
+      // Aktif kategori linkini vurgula
+      function highlightCategory() {
+        document.querySelectorAll(".list-group-item").forEach((item) => {
+          if (item.getAttribute("data-category") === currentCategory) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+      }
+
+      // Aktif pagination linkini vurgula (aktif sınıfı li elemanına uygulanıyor)
+      function highlightPagination() {
+        document.querySelectorAll(".pagination .page-item").forEach((item) => {
+          const link = item.querySelector(".page-link");
+          const text = link.innerText;
+          if (!isNaN(parseInt(text)) && parseInt(text) === currentPage) {
+            item.classList.add("active");
+          } else {
+            item.classList.remove("active");
+          }
+        });
+      }
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
